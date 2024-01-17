@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "34779257701",
+    "project_id": "mytodo-todo-app",
+    "storage_bucket": "mytodo-todo-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34779257701:android:ea4a2c9727cae72bb2df8c",
+        "android_client_info": {
+          "package_name": "com.estebango.flutter_todo_app_r5"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFymVlIK1LTtMdMUiCt0fF9UdxugQzK1o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
