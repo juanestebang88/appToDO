@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:user_repository/user_repository.dart';
 
-abstract class FirebaseUserRepository implements UserRepository{
+class FirebaseUserRepository implements UserRepository{
 
   FirebaseUserRepository({
     FirebaseAuth? firebaseAuth,
