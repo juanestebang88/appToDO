@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:equatable/equatable.dart';
 import 'package:user_repository/user_repository.dart';
 
@@ -46,8 +44,7 @@ class MyUserModel extends Equatable{
     return MyUserEntity(
       id: id,
       email: email,
-      name: name,
-      picture: picture
+      name: name
     );
   }
 
@@ -55,12 +52,11 @@ class MyUserModel extends Equatable{
     return MyUserModel(
       id: entity.id,
       email: entity.email,
-      name: entity.name,
-      picture: entity.picture
+      name: entity.name
     );
   }
 
   @override
-  List<Object?> get props => [id, email, name, picture];
+  List<Object?> get props => [id, email, name];
   
 }

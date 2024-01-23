@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
@@ -26,7 +25,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       }
     });
 
-    on<SignInRequired>((event, emit) async{
+    on<SignOutRequired>((event, emit) async{
       await _userRepository.logOut();
     });
   }
