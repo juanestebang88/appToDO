@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_todo_app_r5/blocs/authentication_bloc/authentication_bloc.dart';
+import 'package:flutter_todo_app_r5/blocs/get_tasks_bloc/get_tasks_bloc.dart';
 import 'package:flutter_todo_app_r5/blocs/my_user_bloc/my_user_bloc.dart';
 import 'package:flutter_todo_app_r5/blocs/sign_in_bloc/sign_in_bloc.dart';
 import 'package:flutter_todo_app_r5/screens/screens.dart';
+import 'package:task_repository/task_repository.dart';
 
 class MyAppView extends StatelessWidget {
   const MyAppView({super.key});
@@ -20,16 +22,21 @@ class MyAppView extends StatelessWidget {
                 providers: [
                   BlocProvider(
                     create: (context) => SignInBloc(
-                        userRepository:
-                            context.read<AuthenticationBloc>().userRepository),
+                      userRepository: context.read<AuthenticationBloc>().userRepository),
                   ),
+
                   BlocProvider(
                     create: (context) => MyUserBloc(
                       myUserRepository: context.read<AuthenticationBloc>().userRepository
-                    )..add(GetMyUser(
-                      myUserId: context.read<AuthenticationBloc>().state.user!.uid
-                    )),
+                    )..add(GetMyUser(myUserId: context.read<AuthenticationBloc>().state.user!.uid)),
                   ),
+
+                  BlocProvider(
+                    create: (context) => GetTasksBloc(
+                      taskRepository: FirebaseTaskRepository()
+                    )..add(GetTasks(myUserId: state.user!.uid))
+                  )
+
                 ],
                 child: const HomeTaskScreen(),
               );

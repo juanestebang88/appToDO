@@ -7,4 +7,8 @@ sealed class GetTasksEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class GetTasks extends GetTasksEvent {}
+class GetTasks extends GetTasksEvent {
+    final String myUserId;
+
+  const GetTasks({required this.myUserId});
+}

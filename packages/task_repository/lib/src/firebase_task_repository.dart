@@ -6,7 +6,7 @@ import 'package:uuid/uuid.dart';
 
 class FirebaseTaskRepository implements TaskRepository{
 
-  final taskCollection = FirebaseFirestore. instance.collection ('tasks');
+  final taskCollection = FirebaseFirestore.instance.collection('tasks');
 
   @override
   Future<MyTaskModel> createTask(MyTaskModel myTaskModel) async{
@@ -27,9 +27,10 @@ class FirebaseTaskRepository implements TaskRepository{
   }
 
   @override
-  Future<List<MyTaskModel>> getTask(){
+  Future<List<MyTaskModel>> getTask(String userId){
     try {
       return taskCollection
+        .where('userId', isEqualTo: userId)
         .get()
         .then((value) => value.docs.map((e) => 
           MyTaskModel.fromEntity(MyTaskEntity.fromDocument(e.data()))

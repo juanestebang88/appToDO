@@ -59,6 +59,7 @@ class ValidationsForm {
   //RegExp
   static final emailPattern = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
   static final onlyNumbersPattern = RegExp(r'^[0-9]+$');
-  static final onlyLettersAndSpacesPattern = RegExp(r'^[a-zA-Z\s]+$');
+  static final onlyLettersAndSpacesPattern = RegExp(r'^[a-zA-Z0-9\s]+$');
+
 
 }

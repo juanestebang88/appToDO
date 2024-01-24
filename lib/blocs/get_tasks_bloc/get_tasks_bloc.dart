@@ -15,7 +15,7 @@ class GetTasksBloc extends Bloc<GetTasksEvent, GetTasksState> {
     on<GetTasks>((event, emit) async{
         emit(GetTasksLoading());
       try {
-        List<MyTaskModel> tasks = await _taskRepository.getTask();
+        List<MyTaskModel> tasks = await _taskRepository.getTask(event.myUserId);
         emit(GetTasksSucces(tasks));
       } catch (e) {
         emit(GetTasksFailure());

@@ -5,15 +5,17 @@ import '../entities/entities.dart';
 class MyTaskModel{
   String taskId;
   String nameTask;
+  String descriptionTask;
   DateTime createDate;
-  MyUserModel myUserModel;
+  String userId;
   bool stateTask;
 
 	MyTaskModel({
 		required this.taskId,
 		required this.nameTask,
+    required this.descriptionTask,
 		required this.createDate,
-		required this.myUserModel,
+		required this.userId,
     required this.stateTask
 	});
 
@@ -21,8 +23,9 @@ class MyTaskModel{
   static final empty = MyTaskModel(
 		taskId: '', 
 		nameTask: '',
+    descriptionTask: '',
 		createDate: DateTime.now(), 
-		myUserModel: MyUserModel.empty,
+		userId: '',
     stateTask: false
 	);
 
@@ -30,15 +33,17 @@ class MyTaskModel{
 	MyTaskModel copyWith({
     String? taskId,
     String? nameTask,
+    String? descriptionTask,
     DateTime? createDate,
-    MyUserModel? myUserModel,
+    String? userId,
     bool? stateTask,
   }) {
     return MyTaskModel(
       taskId: taskId ?? this.taskId,
       nameTask: nameTask ?? this.nameTask,
+      descriptionTask: descriptionTask ?? this.descriptionTask,
       createDate: createDate ?? this.createDate,
-      myUserModel: myUserModel ?? this.myUserModel,
+      userId: userId ?? this.userId,
       stateTask: stateTask ?? this.stateTask
     );
   }
@@ -53,8 +58,9 @@ class MyTaskModel{
     return MyTaskEntity(
       taskId: taskId,
       nameTask: nameTask,
+      descriptionTask: descriptionTask,
       createDate: createDate,
-      myUserModel: myUserModel,
+      userId: userId,
       stateTask: stateTask
     );
   }
@@ -63,8 +69,9 @@ class MyTaskModel{
     return MyTaskModel(
       taskId: entity.taskId,
       nameTask: entity.nameTask,
+      descriptionTask: entity.descriptionTask,
       createDate: entity.createDate,
-      myUserModel: entity.myUserModel,
+      userId: entity.userId,
       stateTask: entity.stateTask
     );
   }
@@ -74,8 +81,9 @@ class MyTaskModel{
     return '''MyTaskModel: {
       taskId: $taskId
       nameTask: $nameTask
+      descriptionTask: $descriptionTask
       createDate: $createDate
-      myUserModel: $myUserModel
+      userId: $userId
       stateTask: $stateTask
     }''';
   }

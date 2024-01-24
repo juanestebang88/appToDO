@@ -4,15 +4,17 @@ import 'package:user_repository/user_repository.dart';
 class MyTaskEntity {
   String taskId;
   String nameTask;
+  String descriptionTask;
   DateTime createDate;
-  MyUserModel myUserModel;
+  String userId;
   bool stateTask;
 
 	MyTaskEntity({
 		required this.taskId,
 		required this.nameTask,
+    required this.descriptionTask,
 		required this.createDate,
-		required this.myUserModel,
+		required this.userId,
     required this.stateTask
 	});
 
@@ -20,8 +22,9 @@ class MyTaskEntity {
     return {
       'taskId': taskId,
       'nameTask': nameTask,
+      'descriptionTask': descriptionTask,
       'createDate': createDate,
-      'myUserModel': myUserModel.toEntity().toDocument(),
+      'userId': userId,
       'stateTask': stateTask
     };
   }
@@ -30,22 +33,24 @@ class MyTaskEntity {
     return MyTaskEntity(
       taskId: doc['taskId'] as String,
 			nameTask: doc['nameTask'] as String,
+      descriptionTask: doc['descriptionTask'] as String,
       createDate: (doc['createDate'] as Timestamp).toDate(),
-      myUserModel: MyUserModel.fromEntity(MyUserEntity.fromDocument(doc['myUserModel'])),
+      userId: (doc['userId']) as String,
       stateTask: doc['stateTask'] as bool
     );
   }
 	
 	@override
-	List<Object?> get props => [taskId, nameTask, createDate, myUserModel, stateTask];
+	List<Object?> get props => [taskId, nameTask, descriptionTask, createDate, userId, stateTask];
 
 	@override
   String toString() {
     return '''MyTaskEntity: {
       taskId: $taskId
       nameTask: $nameTask
+      descriptionTask: $descriptionTask
       createDate: $createDate
-      myUserModel: $myUserModel
+      userId: $userId
       stateTask: $stateTask
     }''';
   }

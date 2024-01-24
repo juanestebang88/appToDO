@@ -43,13 +43,15 @@ class _ButtonCustomState extends State<ButtonCustom> {
 
 class ButtonCardFinish extends StatelessWidget {
   const ButtonCardFinish({
-    super.key,
+    required this.onTap,
+    super.key, 
   });
 
+  final Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){},
+      onTap: onTap,
       child: Container(
         margin: const EdgeInsets.only(top: 10.0 ),
         height: 30.0,
@@ -66,6 +68,28 @@ class ButtonCardFinish extends StatelessWidget {
               size: 12.0
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class ButtonTraslate extends StatelessWidget {
+  const ButtonTraslate({
+    required this.onTap,
+    super.key, 
+  });
+  final Function()? onTap;
+  
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: const Text(
+        'Traducir',
+        style: TextStyle(
+          color: Colors.blue, // Cambia el color del texto a uno que represente un enlace
+          decoration: TextDecoration.underline, // Subraya el texto para indicar que es un enlace
         ),
       ),
     );

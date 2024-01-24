@@ -3,6 +3,6 @@ abstract class TaskRepository{
 
   Future<MyTaskModel> createTask(MyTaskModel myTaskModel);
 
-  Future<List<MyTaskModel>> getTask();
+  Future<List<MyTaskModel>> getTask(String userId);
 
 }
