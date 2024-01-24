@@ -2,35 +2,43 @@ import 'package:flutter/material.dart';
 
 class TextLabel {
 
-  static Text textBold30({required String text}) {
+  static Text textBold({
+    required String text,
+    Color? color = Colors.black,
+    double? size = 30.0}) {
     return Text(text,
     textAlign: TextAlign.center,
-      style: const TextStyle(
-        fontSize: 30.0,
+      style: TextStyle(
+        fontSize: size,
         fontWeight: FontWeight.bold,
+        color: color
       ),
     );
   }
 
-  static Text textPurpleBold24({required String text}) {
+  static Text textPurpleBold({
+    required String text,
+    double? size = 24.0}) {
     return Text(text,
     textAlign: TextAlign.center,
-      style: const TextStyle(
-        fontSize: 24,
+      style: TextStyle(
+        fontSize: size,
         fontWeight: FontWeight.bold,
         color: Colors.deepPurple
       ),
     );
   }
 
-  static Text text18({required String text, Color? color = Colors.black }) {
+  static Text textNormal({
+    required String text,
+    Color? color = Colors.black,
+    double? size = 18.0}) {
     return Text(text,
     textAlign: TextAlign.center,
       style: TextStyle(
-        fontSize: 18,
+        fontSize: size,
         color: color,
       ),
     );
   }
-
 }

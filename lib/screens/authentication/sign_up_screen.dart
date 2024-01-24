@@ -42,10 +42,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 30.0),
                 child:
-                    TextLabel.text18(text: 'Registrate \nIngresando tus datos'),
+                    TextLabel.textNormal(text: 'Registrate \nIngresando tus datos'),
               ),
               TextFormFieldCustom(
-                  emailController: nameController,
+                  controller: nameController,
                   hintText: 'Nombre',
                   icon: Icons.person,
                   inputType: TextInputType.text,
@@ -55,7 +55,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         _formKeySignUp.currentState?.validate() == true);
                   }),
               TextFormFieldCustom(
-                  emailController: emailController,
+                  controller: emailController,
                   hintText: 'Correo',
                   icon: Icons.email,
                   inputType: TextInputType.emailAddress,
@@ -65,7 +65,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         _formKeySignUp.currentState?.validate() == true);
                   }),
               TextFormFieldCustom(
-                  emailController: passwordController,
+                  controller: passwordController,
                   hintText: 'Contraseña',
                   icon: Icons.key,
                   inputType: TextInputType.number,
@@ -77,7 +77,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         _formKeySignUp.currentState?.validate() == true);
                   }),
               TextFormFieldCustom(
-                  emailController: passwordConfirmController,
+                  controller: passwordConfirmController,
                   hintText: 'Confima contraseña',
                   icon: Icons.key_outlined,
                   inputType: TextInputType.number,

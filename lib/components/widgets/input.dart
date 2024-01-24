@@ -3,22 +3,24 @@ import 'package:flutter/material.dart';
 class TextFormFieldCustom extends StatelessWidget {
   const TextFormFieldCustom({
     super.key,
-    required this.emailController,
+    required this.controller,
     required this.icon,
     required this.hintText,
     this.obscure = false,
     this.inputType = TextInputType.text,
+    this.maxLines = 1,
     this.validator, 
     this.onChanged,
   });
 
-  final TextEditingController emailController;
+  final TextEditingController controller;
   final IconData icon;
   final String hintText;
   final bool obscure;
   final TextInputType inputType;
   final String? Function(String?)? validator;
   final Function(String)? onChanged;
+  final int? maxLines;
 
 
   @override
@@ -27,7 +29,8 @@ class TextFormFieldCustom extends StatelessWidget {
       width: MediaQuery.of(context).size.width* 0.85,
       margin: const EdgeInsets.symmetric(vertical: 5.0),
       child: TextFormField(
-        controller: emailController,
+        maxLines: maxLines,
+        controller: controller,
         obscureText: obscure,
         keyboardType: inputType,
         textInputAction: TextInputAction.next,

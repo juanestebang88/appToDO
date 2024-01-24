@@ -42,30 +42,30 @@ class _SignInScreenState extends State<SignInScreen> {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 50.0),
-              child: TextLabel.text18(text: 'Ingresa tus datos'),
+              child: TextLabel.textNormal(text: 'Ingresa tus datos'),
             ),
             TextFormFieldCustom(
-                emailController: emailController,
-                hintText: 'Correo',
-                icon: Icons.email,
-                inputType: TextInputType.emailAddress,
-                validator: (value) => ValidationsForm.email(value.toString()),
-                onChanged: (value) {
-                  setState(() => _isValidForm =
-                      _formKeySignIn.currentState?.validate() == true);
-                }),
+              controller: emailController,
+              hintText: 'Correo',
+              icon: Icons.email,
+              inputType: TextInputType.emailAddress,
+              validator: (value) => ValidationsForm.email(value.toString()),
+              onChanged: (value) {
+                setState(() => _isValidForm =
+                    _formKeySignIn.currentState?.validate() == true);
+              }),
             TextFormFieldCustom(
-                emailController: passwordController,
-                hintText: 'Contraseña',
-                icon: Icons.key,
-                inputType: TextInputType.number,
-                obscure: true,
-                validator: (value) =>
-                    ValidationsForm.password(value.toString()),
-                onChanged: (value) {
-                  setState(() => _isValidForm =
-                      _formKeySignIn.currentState?.validate() == true);
-                }),
+              controller: passwordController,
+              hintText: 'Contraseña',
+              icon: Icons.key,
+              inputType: TextInputType.number,
+              obscure: true,
+              validator: (value) =>
+                  ValidationsForm.password(value.toString()),
+              onChanged: (value) {
+                setState(() => _isValidForm =
+                    _formKeySignIn.currentState?.validate() == true);
+              }),
             !signInRequired
             ? ButtonCustom(
                 text: 'Ingresar',

@@ -43,15 +43,15 @@ class ValidationsForm {
     return null;
   }
 
-  static String? nameTask(String nameTask) {
+  static String? nameAndDescriptionTask(String nameTask) {
     if (nameTask.isEmpty) {
-      return 'El nombre de la tarea no puede estar vacío';
+      return 'Este campo no puede estar vacío';
     }
     if(!onlyLettersAndSpacesPattern.hasMatch(nameTask)){
-      return 'El nombre de la tarea solo debe contener letras';
+      return 'Este campo solo debe contener letras';
     }
     if(nameTask.length < 6){
-      return 'El nombre de la tarea debe tener mas caracteres';
+      return 'Este campo debe tener mas caracteres';
     }
     return null;
   }

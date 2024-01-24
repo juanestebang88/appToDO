@@ -16,6 +16,8 @@ dependencies:
 
   user_repository:
     path: packages/user_repository
+  task_repository:
+    path: packages/task_repository
 
 dev_dependencies:
   flutter_lints: ^2.0.0

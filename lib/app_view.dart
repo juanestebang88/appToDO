@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_todo_app_r5/blocs/authentication_bloc/authentication_bloc.dart';
+import 'package:flutter_todo_app_r5/blocs/my_user_bloc/my_user_bloc.dart';
 import 'package:flutter_todo_app_r5/blocs/sign_in_bloc/sign_in_bloc.dart';
 import 'package:flutter_todo_app_r5/screens/screens.dart';
 
@@ -15,11 +16,22 @@ class MyAppView extends StatelessWidget {
         home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
           builder: (context, state) {
             if (state.status == AuthenticationStatus.authenticated) {
-              return BlocProvider(
-                create: (context) => SignInBloc(
-                  userRepository: context.read<AuthenticationBloc>().userRepository
-                ),
-                child: const HomeScreen(),
+              return MultiBlocProvider(
+                providers: [
+                  BlocProvider(
+                    create: (context) => SignInBloc(
+                        userRepository:
+                            context.read<AuthenticationBloc>().userRepository),
+                  ),
+                  BlocProvider(
+                    create: (context) => MyUserBloc(
+                      myUserRepository: context.read<AuthenticationBloc>().userRepository
+                    )..add(GetMyUser(
+                      myUserId: context.read<AuthenticationBloc>().state.user!.uid
+                    )),
+                  ),
+                ],
+                child: const HomeTaskScreen(),
               );
             } else {
               return const LoginScreen();

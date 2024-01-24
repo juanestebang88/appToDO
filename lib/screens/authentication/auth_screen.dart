@@ -35,19 +35,19 @@ class _LoginScreenState extends State<LoginScreen>
           height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
-              TextLabel.textBold30(text: 'ToDO'),
-              TextLabel.textPurpleBold24(text: 'List App'),
+              TextLabel.textBold(text: 'ToDO'),
+              TextLabel.textPurpleBold(text: 'List App'),
               const SizedBox(
                 height: 20.0,
               ),
               TabBarCustom.tabBar(namePages: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: TextLabel.text18(text: 'Ingresar'),
+                  child: TextLabel.textNormal(text: 'Ingresar'),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: TextLabel.text18(text: 'Registrarse'),
+                  child: TextLabel.textNormal(text: 'Registrarse'),
                 ),
               ], tabController: tabController),
               Expanded(
