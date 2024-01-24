@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_todo_app_r5/blocs/create_task_bloc/create_task_bloc.dart';
+import 'package:flutter_todo_app_r5/blocs/get_tasks_bloc/get_tasks_bloc.dart';
 import 'package:flutter_todo_app_r5/blocs/my_user_bloc/my_user_bloc.dart';
 import 'package:flutter_todo_app_r5/blocs/sign_in_bloc/sign_in_bloc.dart';
 import 'package:flutter_todo_app_r5/components/components.dart';
@@ -43,20 +44,22 @@ class _CreateTaskScreenState extends State<CreateTaskScreen> {
           width: MediaQuery.of(context).size.width,
           child: BlocListener<CreateTaskBloc, CreateTaskState>(
             listener: (context, state) {
-               if (state is CreateTaskSuccess){
+              if (state is CreateTaskSuccess) {
                 setState(() {
                   postTaskRequired = false;
                 });
                 Navigator.pop(context);
-              }else if (state is CreateTaskLoading) {
+              } else if (state is CreateTaskLoading) {
                 setState(() {
                   postTaskRequired = true;
                 });
-              }else if (state is CreateTaskFailure) {
+              } else if (state is CreateTaskFailure) {
                 setState(() {
                   postTaskRequired = false;
                 });
-                AlertCustom.simple(context: context, text:  'Hubo un problema, intentalo de nuevo');
+                AlertCustom.simple(
+                    context: context,
+                    text: 'Hubo un problema, intentalo de nuevo');
               }
             },
             child: Form(
@@ -94,22 +97,23 @@ class _CreateTaskScreenState extends State<CreateTaskScreen> {
                         }),
                     !postTaskRequired
                         ? ButtonCustom(
-                            text: 'Crear',
-                            currentStateValidate: _isValidForm,
-                            function: !_isValidForm
-                                ? null
-                                : () {
-                                    setState(() {
-                                      myTaskModel.nameTask =
-                                          titleController.text;
-                                      myTaskModel.descriptionTask =
-                                          descriptionController.text;
-                                    });
-                                    context
-                                        .read<CreateTaskBloc>()
-                                        .add(CreateTask(myTaskModel));
-                                  },
-                          )
+                          text: 'Crear',
+                          currentStateValidate: _isValidForm,
+                          function: !_isValidForm
+                              ? null
+                              : () {
+                                  setState(() {
+                                    myTaskModel.nameTask =
+                                        titleController.text;
+                                    myTaskModel.descriptionTask =
+                                        descriptionController.text;
+                                  });
+                                  context
+                                      .read<CreateTaskBloc>()
+                                      .add(CreateTask(myTaskModel));
+                                  
+                                },
+                        )
                         : const ProcessIndicatorCustom()
                   ],
                 )),

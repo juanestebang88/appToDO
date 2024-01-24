@@ -31,6 +31,8 @@ class FirebaseTaskRepository implements TaskRepository{
     try {
       return taskCollection
         .where('userId', isEqualTo: userId)
+        .orderBy('stateTask', descending: false)  // Ordenar por stateTask (false primero)
+        .orderBy('createDate', descending: false)
         .get()
         .then((value) => value.docs.map((e) => 
           MyTaskModel.fromEntity(MyTaskEntity.fromDocument(e.data()))
@@ -38,6 +40,18 @@ class FirebaseTaskRepository implements TaskRepository{
     } catch (e) {
       log(e.toString());
       rethrow;      
+    }
+  }
+  
+  @override
+  Future<void> upTask(String taskId) async {
+    try {
+      await taskCollection
+          .doc(taskId)
+          .update({'stateTask': true});
+    } catch (e) {
+      log(e.toString());
+      rethrow;
     }
   }
 }

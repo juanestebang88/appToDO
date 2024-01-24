@@ -18,3 +18,4 @@ final class GetTasksSucces extends GetTasksState {
   const GetTasksSucces(this.tasks);
 }
 
+

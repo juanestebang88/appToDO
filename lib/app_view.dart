@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_todo_app_r5/blocs/authentication_bloc/authentication_bloc.dart';
+import 'package:flutter_todo_app_r5/blocs/create_task_bloc/create_task_bloc.dart';
 import 'package:flutter_todo_app_r5/blocs/get_tasks_bloc/get_tasks_bloc.dart';
 import 'package:flutter_todo_app_r5/blocs/my_user_bloc/my_user_bloc.dart';
 import 'package:flutter_todo_app_r5/blocs/sign_in_bloc/sign_in_bloc.dart';
+import 'package:flutter_todo_app_r5/blocs/update_task_bloc%20/update_task_bloc.dart';
 import 'package:flutter_todo_app_r5/screens/screens.dart';
 import 'package:task_repository/task_repository.dart';
 
@@ -35,8 +37,15 @@ class MyAppView extends StatelessWidget {
                     create: (context) => GetTasksBloc(
                       taskRepository: FirebaseTaskRepository()
                     )..add(GetTasks(myUserId: state.user!.uid))
-                  )
-
+                  ),
+                  BlocProvider(
+                    create: (context) => CreateTaskBloc(
+                        taskRepository: FirebaseTaskRepository()),
+                  ),
+                  BlocProvider(
+                    create: (context) => UpdateTaskBloc(
+                      taskRepository: FirebaseTaskRepository()),
+                  ),
                 ],
                 child: const HomeTaskScreen(),
               );

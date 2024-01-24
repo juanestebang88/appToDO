@@ -5,4 +5,6 @@ abstract class TaskRepository{
 
   Future<List<MyTaskModel>> getTask(String userId);
 
+  Future<void> upTask(String tastId);
+
 }
